@@ -80,7 +80,7 @@ def generate_blog(request):
 def generate_blog_from_transcription(transcription):
     openai.api_key = str(os.getenv('OPEN_AI_TRANSCRIPT_KEY'))
 
-    prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article:\n\n{transcription}\n\nArticle:"
+    prompt = f"Based on the following transcript from a YouTube video, write a comprehensive blog article, write it based on the transcript, but dont make it look like a youtube video, make it look like a proper blog article. Keep the article concise and to the point and don't go over 100 words total. Repeat, do not go over 100 words:\n\n{transcription}\n\nArticle:"
 
     response = openai.Completion.create(
         model="gpt-3.5-turbo-instruct",
